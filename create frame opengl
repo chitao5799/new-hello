@@ -1,0 +1,845 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package helloworld;
+public class CreateFrame {  //xoa bo class nay de chay cai duoi
+    public static void main(String[] args) {
+        
+    }
+}
+/**
+ *https://solarianprogrammer.com/2014/12/08/getting-started-jogl-java-opengl-eclipse/#JOGL
+ * https://solarianprogrammer.com/2014/12/08/getting-started-jogl-java-opengl-eclipse/
+ * @author HDcomputer
+ */
+/*import javax.swing.JFrame;
+
+import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GLAutoDrawable;
+import com.jogamp.opengl.GLCapabilities;
+import com.jogamp.opengl.GLEventListener;
+import com.jogamp.opengl.GLProfile;
+import com.jogamp.opengl.awt.GLCanvas;
+import com.jogamp.opengl.glu.GLU;
+import com.jogamp.opengl.util.FPSAnimator;
+
+import java.util.Random;
+public class CreateFrame implements GLEventListener{
+	
+	private float rtri ;
+	private GLU glu = new GLU();
+	float r=0.0f, g=0.0f,b=0.0f,x=0.0f,y=0.0f,size=0.0f;
+	float rrrrr = 6f;
+	float oiu = 6;
+	public void display (GLAutoDrawable drawable) {
+		MatTroi(drawable);
+	
+		for(int i=-50;i<50; i = i + 8)
+		{
+			VeMay(drawable,i,oiu,-19f);
+		}
+		for(float j=-50;j<50; j+=0.55)
+		{
+		   VeNui(drawable, j,0.15f, -2f);
+		   VeNui(drawable, j,0.15f, -2.5f);
+		   VeNui(drawable, j,0.15f, -3f);
+		}
+		DuongTo(drawable);
+		ViaHe(drawable);
+		ViaHe11(drawable);
+		ViaHe2(drawable);
+		ViaHe22(drawable);
+		for(int i=-50;i<50; i=i+5)
+		{
+		HoNuoc(drawable,i, -3.5f, -8f);
+		}
+		
+		for(int i=-50;i<50; i++)
+		{
+			VeChongChong(drawable,i,0.25f,-3f);
+		}
+		VeNha(drawable,0f,0f,-4f,0.6f,0.6f,0.6f); //mau xam
+		VeNha(drawable,0.8f,0f,-6f,1.0f,0.2f,0.2f); //mau do
+		VeNha(drawable,-0.55f,0f,-6f,0.3f,0.3f,1.0f); //mau xanh
+		VeNha(drawable,-1.3f,0f,-7f,1.0f,0.5f,0.2f); //mau cam
+		VeNhaTo(drawable, 1.6f, 0.0f, -7f, 0.3f, 0.3f, 0.3f);
+		VeNhaTo(drawable, -3.0f, 0.0f, -8f, 1.0f,0.2f,0.2f);
+		VeNha(drawable,2.8f,0f,-6.5f,1.0f,0.5f,0.2f);
+		for(int i=-54;i<54; i = i + 8)
+		{
+			VeMay(drawable,i,8f,-19f);
+		}
+		
+		for(int i=-50;i<50; i++ )
+		{
+			VachKeDuong(drawable, i, -0.6f, -3f);
+		}
+		for(int i=-50;i<50; i = i + 4)
+		{
+			VeCayThong(drawable,i,-0.1f,-20f);
+		}
+		for(int i=-50;i<50; i = i + 6)
+		{
+			VeXeBus(drawable, i, -1.7f, -12f);
+			VeXeCon(drawable, i+1f, -3.2f, -12f);
+		}
+		for(int i=-52;i<52; i = i + 4)
+		{
+			VeCayThong(drawable,i,-6f,-20f);
+		}
+		for(int i=-50;i<50; i = i + 4)
+		{
+			Benches(drawable, i, -4.7f, -13f);
+		}
+		Hinh3D(drawable,0f,-7f, -20.0f);
+		Hinh3D(drawable,-12f,-7f, -20.0f);
+		Hinh3D(drawable,12f,-7f, -20.0f);
+	}
+	float aa=1f;
+	Random rd = new Random();
+	public void init (GLAutoDrawable drawable) {
+		//doi mau background
+				GL2 gl = drawable.getGL().getGL2();
+				glu = new GLU();
+				
+			   //  select clearing color (background) color 
+			    gl.glClearColor(0.0f, 0.7f, 1.0f, 0.0f);
+			 
+			   // /* initialize viewing values 
+			    gl.glMatrixMode(GL2.GL_PROJECTION);
+			    gl.glLoadIdentity();
+			    gl.glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
+			      
+			     
+	}
+	public void VeNhaTo(GLAutoDrawable drawable,float x,float y,float size,float r,float g,float b){
+		final GL2 gl = drawable.getGL().getGL2();
+		gl.glLoadIdentity();
+		gl.glTranslatef(x, y, size);
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glColor3f(r, g, b);
+			gl.glVertex2d(0.0f, 0.0f);
+			gl.glVertex2d(0.0f, 1.5f);
+			gl.glVertex2d(1.3f, 1.5f);
+			gl.glVertex2d(1.3f, 0.0f);
+		gl.glEnd();
+		double ya=1.3,yb=1.4;
+		{
+			gl.glColor3d(1, 1, 1);
+			for(int i=1;i<=7;i++) 
+			{
+				double xa=0.1,xb=0.2;
+				for(int j=1;j<=5;j++)
+				{
+				gl.glBegin(GL2.GL_QUADS);
+				gl.glVertex2d(xa, ya);
+				gl.glVertex2d(xa, yb);
+				gl.glVertex2d(xb, yb);
+				gl.glVertex2d(xb, ya);
+			gl.glEnd();
+				gl.glBegin(GL2.GL_QUADS);
+				gl.glVertex2d(xa+0.2, ya);
+				gl.glVertex2d(xa+0.2, yb);
+				gl.glVertex2d(xb+0.2, yb);
+				gl.glVertex2d(xb+0.2, ya);
+			gl.glEnd();
+				xa+=0.2;
+				xb+=0.2;
+				}
+				ya-=0.2;
+				yb-=0.2;
+			}
+		}
+	}
+	public void VeChongChong(GLAutoDrawable drawable,float x,float y, float size) {
+		
+		final GL2 gl = drawable.getGL().getGL2();
+		gl.glLoadIdentity();
+		gl.glTranslatef(x+0.5f, y, size);
+		{
+		gl.glPushMatrix();
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glColor3f(1f, 1f, 1f);
+			gl.glVertex2d(0f, 0f);
+			gl.glVertex2d(0f, 0.6f);
+			gl.glVertex2d(0.05f, 0.6f);
+			gl.glVertex2d(0.05, 0f);
+		gl.glEnd();
+		gl.glPopMatrix();
+		
+		gl.glPushMatrix();
+		gl.glTranslatef(0.025f, 0.6f, 0f);
+		gl.glRotatef(rtri, 0.0f, 0.0f, 1.0f);
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glColor3f(1f, 1f, 1f);
+			gl.glVertex2d(-0.0250f, 0.0f);
+			gl.glVertex2d(-0.025f, 0.3f);
+			gl.glVertex2d(0.025f, 0.3f);
+			gl.glVertex2d(0.025, 0f);
+		gl.glEnd();
+		gl.glPopMatrix();
+		
+		gl.glPushMatrix();
+		gl.glTranslatef(0.025f, 0.6f, 0f);
+		gl.glRotatef(rtri, 0.0f, 0.0f, 1.0f);
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glColor3f(1f, 1f, 1f);
+			gl.glVertex2d(-0.025f, 0f);
+			gl.glVertex2d(-0.025f, -0.3f);
+			gl.glVertex2d(0.025f, -0.3f);
+			gl.glVertex2d(0.025, 0f);
+		gl.glEnd();
+		gl.glPopMatrix();
+		}
+		rtri+=5;
+	}
+	public void VeNha(GLAutoDrawable drawable,float x,float y,float size,float r, float g,float b ) {
+		final GL2 gl = drawable.getGL().getGL2();
+		gl.glLoadIdentity();
+		
+		gl.glTranslatef(x, y, size);
+		{
+		gl.glColor3f(r, g, b);
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glVertex2d(0f, 0f);
+			gl.glVertex2d(0f, 1.5f);
+			gl.glVertex2d(0.5f, 1.5f);
+			gl.glVertex2d(0.5f, 0f);
+		gl.glEnd();
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glVertex2d(0.1f, 1.5f);
+			gl.glVertex2d(0.1f, 2.1f);
+			gl.glVertex2d(0.4f, 2.1f);
+			gl.glVertex2d(0.4f, 1.5f);
+		gl.glEnd();
+		gl.glBegin(GL2.GL_LINE_STRIP);
+			gl.glColor3f(1f, 1f, 1f);
+			gl.glVertex2d(0f, 0f);
+			gl.glVertex2d(0f, 1.5f);
+			gl.glVertex2d(0.1f, 1.5f);
+			gl.glVertex2d(0.1f, 2.1f);
+			gl.glVertex2d(0.4f, 2.1f);
+			gl.glVertex2d(0.4f, 1.5f);
+			gl.glVertex2d(0.5f, 1.5f);
+			gl.glVertex2d(0.5f, 0f);
+			gl.glVertex2d(0f, 0f);
+		gl.glEnd();
+		{
+		gl.glColor3d(1, 1, 1);
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glVertex2d(0.2f, 1.9f);
+			gl.glVertex2d(0.2f, 2.0f);
+			gl.glVertex2d(0.3f, 2.0f);
+			gl.glVertex2d(0.3f, 1.9f);
+		gl.glEnd();
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glVertex2d(0.2f, 1.7f);
+			gl.glVertex2d(0.2f, 1.8f);
+			gl.glVertex2d(0.3f, 1.8f);
+			gl.glVertex2d(0.3f, 1.7f);
+		gl.glEnd();
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glVertex2d(0.2f, 1.5f);
+			gl.glVertex2d(0.2f, 1.6f);
+			gl.glVertex2d(0.3f, 1.6f);
+			gl.glVertex2d(0.3f, 1.5f);
+		gl.glEnd();
+		
+		double xa=0.1,xb=0.2,ya=1.3,yb=1.4;
+		
+		for(int i=1;i<=7;i++) 
+		{
+			gl.glBegin(GL2.GL_QUADS);
+			gl.glVertex2d(xa, ya);
+			gl.glVertex2d(xa, yb);
+			gl.glVertex2d(xb, yb);
+			gl.glVertex2d(xb, ya);
+		gl.glEnd();
+		
+			gl.glBegin(GL2.GL_QUADS);
+			gl.glVertex2d(xa+0.2, ya);
+			gl.glVertex2d(xa+0.2, yb);
+			gl.glVertex2d(xb+0.2, yb);
+			gl.glVertex2d(xb+0.2, ya);
+		gl.glEnd();
+		
+		ya-=0.2;
+		yb-=0.2;
+		}
+		}
+		}
+	}
+	public void MatTroi(GLAutoDrawable drawable) {
+		final GL2 gl = drawable.getGL().getGL2();
+		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT );
+	      gl.glLoadIdentity();
+	      gl.glPushMatrix();
+		gl.glTranslatef(-7.0f, 7.5f, -17f);
+		double a, b, bngle;
+		
+		gl.glColor3f(1f, 1f, 0.6f);
+		gl.glBegin(GL2.GL_POLYGON);
+		for(int i = 0; i<= 360; i++)
+		{
+			bngle = 2* Math.PI *i/360;
+			a= Math.cos(bngle)*1.4;
+			b= Math.sin(bngle)*1.4;
+			gl.glVertex2d(a, b);
+		}gl.glEnd();
+		gl.glColor3f(1f, 1f, 0.4f);
+		gl.glBegin(GL2.GL_POLYGON);
+		for(int i = 0; i<= 360; i++)
+		{
+			bngle = 2* Math.PI *i/360;
+			a= Math.cos(bngle)*1.2;
+			b= Math.sin(bngle)*1.2;
+			gl.glVertex2d(a, b);
+		}gl.glEnd();
+		
+		gl.glBegin(GL2.GL_POLYGON);
+		gl.glColor3f(1f, 0.9f, 0f);//tam mat troi
+		for(int i = 0; i<= 360; i++)
+		{
+			bngle = 2* Math.PI *i/360;
+			a= Math.cos(bngle);
+			b= Math.sin(bngle);
+			gl.glVertex2d(a, b);
+		}gl.glEnd();
+		gl.glPopMatrix();
+	}
+	public void HoNuoc(GLAutoDrawable drawable,float x,float y, float size) {
+		final GL2 gl = drawable.getGL().getGL2();
+	     gl.glLoadIdentity();
+		gl.glTranslatef(x,y,size);
+		gl.glColor3f(0.9f, 0.9f, 0f);
+				double a, b, bngle;
+		gl.glBegin(GL2.GL_POLYGON);
+		for(int i = 0; i<= 360; i++)
+		{
+			bngle = 2* Math.PI *i/360;
+			a= Math.cos(bngle)*1.1;
+			b= Math.sin(bngle)*0.3*1.1;
+			gl.glVertex2d(a, b);
+		}gl.glEnd();
+		gl.glBegin(GL2.GL_POLYGON);
+		gl.glColor3f(0f, 0.5f,0.8f);
+		for(int i = 0; i<= 360; i++)
+		{
+			bngle = 2* Math.PI *i/360;
+			a= Math.cos(bngle);
+			b= Math.sin(bngle)*0.3;
+			gl.glVertex2d(a, b);
+		}gl.glEnd();
+	}
+	private void VeCayThong(GLAutoDrawable drawable,float a, float b, float size)
+    {
+		
+		final GL2 gl = drawable.getGL().getGL2();
+		gl.glLoadIdentity();
+		gl.glTranslatef(a, b, size);
+        float x=-2.0f,y=-0.5f,x2=0f,x3=0.8f;
+        for(int i=0;i<5;i++)
+        {
+//            gl.glColor3f(0.0f, 0.75f, 0.0f);
+            gl.glBegin(GL2.GL_TRIANGLES);
+            gl.glColor3f(0.0f, 0.86f, 0.0f);
+            gl.glVertex2f(x, y+x2+0.9f);
+            gl.glColor3f(0.0f, 0.86f, 0.0f);
+            gl.glVertex2f(x+0.5f+x3, y+x2);
+            gl.glColor3f(0.0f, 0.3f, 0.0f);
+            gl.glVertex2f(x-0.5f-x3, y+x2);
+            x2+=0.55f;
+            x3-=0.18f;
+            gl.glEnd();
+        }
+       gl.glBegin(GL2.GL_QUADS);
+            gl.glColor3f(0.48f, 0.65f, 0.35f);
+            gl.glVertex2f(-2.15f, -1f);
+            gl.glVertex2f(-2.1f, -0.5f);
+            gl.glColor3f(1.0f, 0.65f, 0.35f);
+            gl.glVertex2f(-1.9f, -0.5f);
+            gl.glVertex2f(-1.85f, -1f);
+            gl.glEnd();
+    }
+	boolean uio = false;
+	private void VeMay(GLAutoDrawable drawable,float x, float y, float size) {
+		final GL2 gl = drawable.getGL().getGL2();
+	      gl.glLoadIdentity();
+
+		     if(oiu<10 && uio == false)
+			     x += oiu;
+			     if(uio == true)x-=oiu;
+			     if(oiu>=10)uio = true;
+			     if(oiu < -10)uio = false;
+	    gl.glPushMatrix();
+
+	    gl.glTranslatef(x-0.3f, y, size+1f);
+
+		gl.glColor3f(1.0f, 1.0f, 1.0f);
+		
+
+		double a, b, bngle;
+		gl.glBegin(GL2.GL_POLYGON);
+		for(int i = 0; i<= 360; i++)
+		{
+			bngle = 2* Math.PI *i/360;
+			a= Math.cos(bngle)/2+0.5;
+			b= Math.sin(bngle)/2;
+			gl.glVertex2d(a, b);
+		}gl.glEnd();
+
+		gl.glBegin(GL2.GL_POLYGON);
+		gl.glColor3f(1.0f, 1.0f, 1.0f);
+		for(int i = 0; i<= 360; i++)
+		{
+			bngle = 2* Math.PI *i/360;
+			a= Math.cos(bngle)/2;
+			b= Math.sin(bngle)/2+0.3;
+			gl.glVertex2d(a, b);
+		}gl.glEnd();
+		
+
+		gl.glBegin(GL2.GL_POLYGON);
+		gl.glColor3f(1.0f, 1.0f, 1.0f);
+		for(int i = 0; i<= 360; i++)
+		{
+			bngle = 2* Math.PI *i/360;
+			a= Math.cos(bngle)/2-0.5;
+			b= Math.sin(bngle)/2;
+			gl.glVertex2d(a, b);
+		}gl.glEnd();
+		gl.glFlush();
+
+		if(uio == false)
+		oiu += .001f;
+		else
+			oiu -= .001f;
+		//aa +=0.1;
+		gl.glPopMatrix();
+	}
+	public void DuongTo(GLAutoDrawable drawable)
+	{
+		final GL2 gl= drawable.getGL().getGL2();
+		gl.glLoadIdentity();
+		gl.glTranslated(-10, 1.0, -9);
+		gl.glColor3f(0.4f,0.4f,0.4f);
+		gl.glBegin(GL2.GL_QUADS);
+		gl.glVertex2d(-6, -0.5);
+		gl.glVertex2d(-6, -6);
+		gl.glVertex2d(20, -6);
+		gl.glVertex2d(20, -0.5);
+		gl.glEnd();
+		gl.glFlush();
+	}
+	
+	public void ViaHe(GLAutoDrawable drawable)
+	{
+		final GL2 gl= drawable.getGL().getGL2();
+		gl.glLoadIdentity();
+		gl.glTranslated(-10, -2.3, -9);
+		gl.glColor3f(0f,0.5f,0.0f);
+		gl.glBegin(GL2.GL_QUADS);
+		gl.glVertex2d(-4, -0.5);
+		gl.glVertex2d(-4, -4);
+		gl.glVertex2d(20, -4);
+		gl.glVertex2d(20, -0.5);
+		gl.glEnd();
+		gl.glFlush();
+	}
+	public void ViaHe11(GLAutoDrawable drawable)
+	{
+		final GL2 gl= drawable.getGL().getGL2();
+		gl.glLoadIdentity();
+		gl.glTranslated(-10, -2.08, -7);
+		gl.glColor3f(0.8f,0.8f,0.8f);
+		gl.glBegin(GL2.GL_QUADS);
+		gl.glVertex2d(-4, -0.5);
+		gl.glVertex2d(-4, -0.1);
+		gl.glVertex2d(40, -0.1);
+		gl.glVertex2d(40, -0.5);
+		gl.glEnd();
+		gl.glFlush();
+	}
+	public void ViaHe2(GLAutoDrawable drawable)
+	{
+		final GL2 gl= drawable.getGL().getGL2();
+		gl.glLoadIdentity();
+		gl.glTranslated(-10, 1.3f, -9);
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glColor3f(0f,0.2f,0.0f);
+			gl.glVertex2d(-2, -0.5);
+			gl.glColor3f(0f,0.5f,0.0f);
+			gl.glVertex2d(-2, -2);
+			gl.glColor3f(0f,0.5f,0.0f);
+			gl.glVertex2d(20, -2);
+			gl.glColor3f(0f,0.2f,0.0f);
+			gl.glVertex2d(20, -0.5);
+		gl.glEnd();
+		gl.glFlush();
+	}
+	public void ViaHe22(GLAutoDrawable drawable)
+	{
+		final GL2 gl= drawable.getGL().getGL2();
+		gl.glLoadIdentity();
+		gl.glTranslated(-10, -0.03, -7);
+		gl.glColor3f(0.8f,0.8f,0.8f);
+		gl.glBegin(GL2.GL_QUADS);
+		gl.glVertex2d(-4, -0.5);
+		gl.glVertex2d(-4, -0.1);
+		gl.glVertex2d(40, -0.1);
+		gl.glVertex2d(40, -0.5);
+		gl.glEnd();
+		gl.glFlush();
+	}
+	public void VachKeDuong(GLAutoDrawable drawable,float x, float y, float size)
+	{
+		final GL2 gl= drawable.getGL().getGL2();
+		gl.glLoadIdentity();
+		gl.glTranslated(x, y, size);
+		gl.glColor3f(1f,1f,1f);
+		gl.glBegin(GL2.GL_QUADS);
+		gl.glVertex2d(0.0, 0.0);
+		gl.glVertex2d(0.0,0.05 );
+		gl.glVertex2d(0.3, 0.05);
+		gl.glVertex2d(0.3, 0);
+		gl.glEnd();
+		gl.glFlush();
+	}
+	public void VeXeBus(GLAutoDrawable drawable,float x, float y, float size) {
+		final GL2 gl= drawable.getGL().getGL2();
+		gl.glLoadIdentity();
+	     if(oiu<13 && uio == false)
+		     x -= oiu;
+		     if(uio == true)x+=oiu;
+		     if(oiu>=13)uio = true;
+		     if(oiu < -13)uio = false;
+		     gl.glPushMatrix();
+		gl.glTranslated(x, y, size);
+		
+		//ThanXe
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glColor3f(1f,1f,0f);
+			gl.glVertex2d(0.0, 0.0);
+			gl.glVertex2d(0.0, 0.6);
+			gl.glVertex2d(2.3, 0.6);
+			gl.glVertex2d(2.3, 0.0);
+		gl.glEnd();
+		//MaiXe
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glColor3f(0.7f,0.7f,0f);
+			gl.glVertex2d(0.0, 0.6);
+			gl.glVertex2d(0.4, 1.0);
+			gl.glVertex2d(2.3, 1.0);
+			gl.glVertex2d(2.3, 0.6);
+		gl.glEnd();
+		//Cua to xe
+		gl.glBegin(GL2.GL_QUADS);
+		gl.glColor3f(0.0f,0.5f,0.7f);
+			gl.glVertex2d(0.4, 0.3);
+			gl.glVertex2d(0.4, 0.8);
+			gl.glVertex2d(0.8, 0.8);
+			gl.glVertex2d(0.8, 0.3);
+		gl.glEnd();
+		//Cua so thu 1
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glColor3f(0.0f,0.5f,0.7f);
+			gl.glVertex2d(1.0, 0.5);
+			gl.glVertex2d(1.0, 0.8);
+			gl.glVertex2d(1.3, 0.8);
+			gl.glVertex2d(1.3, 0.5);
+		gl.glEnd();
+		//Cua so thu 2
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glColor3f(0.0f,0.5f,0.7f);
+			gl.glVertex2d(1.4, 0.5);
+			gl.glVertex2d(1.4, 0.8);
+			gl.glVertex2d(1.7, 0.8);
+			gl.glVertex2d(1.7, 0.5);
+		gl.glEnd();
+		//Cua so thu 3
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glColor3f(0.0f,0.5f,0.7f);
+			gl.glVertex2d(1.8, 0.5);
+			gl.glVertex2d(1.8, 0.8);
+			gl.glVertex2d(2.1, 0.8);
+			gl.glVertex2d(2.1, 0.5);
+		gl.glEnd();
+		//Banh1
+		double a, b, angle;
+		gl.glBegin(GL2.GL_POLYGON);
+		gl.glColor3f(0.0f, 0.0f, 0.0f);
+		for(int i = 0; i<= 360; i++)
+		{
+			angle = 2* Math.PI *i/360;
+			a= Math.cos(angle)/4.5+0.6;
+			b= Math.sin(angle)/4.5;
+			gl.glVertex2d(a, b);
+		}gl.glEnd();
+		gl.glBegin(GL2.GL_POLYGON);
+		gl.glColor3f(1.0f, 1.0f, 1.0f);
+		for(int i = 0; i<= 360; i++)
+		{
+			angle = 2* Math.PI *i/360;
+			a= Math.cos(angle)/6.5+0.6;
+			b= Math.sin(angle)/6.5;
+			gl.glVertex2d(a, b);
+		}gl.glEnd();
+		//Banh2
+		gl.glBegin(GL2.GL_POLYGON);
+		gl.glColor3f(0.0f, 0.0f, 0.0f);
+		for(int i = 0; i<= 360; i++)
+		{
+			angle = 2* Math.PI *i/360;
+			a= Math.cos(angle)/4.5+1.95;
+			b= Math.sin(angle)/4.5;
+			gl.glVertex2d(a, b);
+		}gl.glEnd();
+		gl.glBegin(GL2.GL_POLYGON);
+		gl.glColor3f(1.0f, 1.0f, 1.0f);
+		for(int i = 0; i<= 360; i++)
+		{
+			angle = 2* Math.PI *i/360;
+			a= Math.cos(angle)/6.5+1.95;
+			b= Math.sin(angle)/6.5;
+			gl.glVertex2d(a, b);
+		}gl.glEnd();
+		if(uio == false)
+			oiu += .001f;
+			else
+				oiu -= .001f;
+			//aa +=0.1;
+		gl.glFlush();
+		
+	}
+	public void VeXeCon(GLAutoDrawable drawable,float x, float y, float size) {
+			final GL2 gl= drawable.getGL().getGL2();
+			gl.glLoadIdentity();
+			if(oiu<10 && uio == false)
+			     x += oiu;
+			     if(uio == true)x-=oiu;
+			     if(oiu>=10)uio = true;
+			     if(oiu < -10)uio = false;
+			gl.glTranslated(x, y, size);
+		
+			 gl.glPushMatrix();
+			gl.glBegin(GL2.GL_QUADS);
+				gl.glColor3f(1.0f,0.0f,0.0f);
+				gl.glVertex2d(0.0, 0.0);
+				gl.glVertex2d(0.0, 0.4);
+				gl.glVertex2d(1.7, 0.4);
+				gl.glVertex2d(1.7, 0.0);
+			//MaiXe
+			gl.glBegin(GL2.GL_QUADS);
+				gl.glColor3f(1.0f,0.0f,0.0f);
+				gl.glVertex2d(0.0, 0.4);
+				gl.glVertex2d(0.0, 0.8);
+				gl.glVertex2d(0.8, 0.8);
+				gl.glVertex2d(1.0, 0.4);	
+			gl.glEnd();
+			//Cua1
+			gl.glBegin(GL2.GL_QUADS);
+				gl.glColor3f(0.8f,0.8f,0.8f);
+				gl.glVertex2d(0.1, 0.4);
+				gl.glVertex2d(0.1, 0.7);
+				gl.glVertex2d(0.4, 0.7);
+				gl.glVertex2d(0.4, 0.4);	
+			gl.glEnd();
+			//Cua2
+			gl.glBegin(GL2.GL_QUADS);
+				gl.glColor3f(0.8f,0.8f,0.8f);
+				gl.glVertex2d(0.5, 0.4);
+				gl.glVertex2d(0.5, 0.7);
+				gl.glVertex2d(0.8, 0.7);
+				gl.glVertex2d(0.8, 0.4);	
+			gl.glEnd();
+			//Banh1
+			double a, b, angle;
+			gl.glBegin(GL2.GL_POLYGON);
+			gl.glColor3f(0.0f, 0.0f, 0.0f);
+			for(int i = 0; i<= 360; i++)
+			{
+				angle = 2* Math.PI *i/360;
+				a= Math.cos(angle)/4.5+0.3;
+				b= Math.sin(angle)/4.5;
+				gl.glVertex2d(a, b);
+			}gl.glEnd();
+			gl.glBegin(GL2.GL_POLYGON);
+			gl.glColor3f(1.0f, 1.0f, 1.0f);
+			for(int i = 0; i<= 360; i++)
+			{
+				angle = 2* Math.PI *i/360;
+				a= Math.cos(angle)/6.5+0.3;
+				b= Math.sin(angle)/6.5;
+				gl.glVertex2d(a, b);
+			}gl.glEnd();
+			//Banh1
+			gl.glBegin(GL2.GL_POLYGON);
+			gl.glColor3f(0.0f, 0.0f, 0.0f);
+			for(int i = 0; i<= 360; i++)
+			{
+				angle = 2* Math.PI *i/360;
+				a= Math.cos(angle)/4.5+1.3;
+				b= Math.sin(angle)/4.5;
+				gl.glVertex2d(a, b);
+			}gl.glEnd();
+			gl.glBegin(GL2.GL_POLYGON);
+			gl.glColor3f(1.0f, 1.0f, 1.0f);
+			for(int i = 0; i<= 360; i++)
+			{
+				angle = 2* Math.PI *i/360;
+				a= Math.cos(angle)/6.5+1.3;
+				b= Math.sin(angle)/6.5;
+				gl.glVertex2d(a, b);
+			}gl.glEnd();
+			gl.glFlush();
+			if(uio == false)
+			oiu += .001f;
+			else
+				oiu -= .001f;
+			//aa +=0.1;
+			gl.glPopMatrix();
+		}
+	public void VeNui(GLAutoDrawable drawable,float x, float y, float size) {
+		final GL2 gl= drawable.getGL().getGL2();
+		gl.glLoadIdentity();
+		gl.glTranslated(x, y, size);
+		gl.glColor3f(0f, 0.1f, 0.1f);
+		gl.glBegin(GL2.GL_TRIANGLES);
+			    gl.glVertex2d(0f, 0f);
+				gl.glColor3f(0.3f, 0.6f, 0.3f);
+			    gl.glVertex2d(0.3f, 0.5f);
+			    gl.glColor3f(0f, 0.1f, 0.1f);
+			    gl.glVertex2d(0.6f, 0.0f);
+		gl.glEnd();
+	}
+	
+	public void Benches(GLAutoDrawable drawable,float x, float y, float size){
+		final GL2 gl= drawable.getGL().getGL2();
+		gl.glLoadIdentity();
+		gl.glTranslated(x, y, size);
+		//ChanGhe
+		gl.glBegin(GL2.GL_QUADS);
+			gl.glColor3f(0.2f, 0.2f, 0.2f);
+		    gl.glVertex2d(0.25f, 0f);
+		    gl.glVertex2d(0.25f, 0.7f);
+		    gl.glVertex2d(0.3f, 0.7f);
+		    gl.glVertex2d(0.3f, 0f);
+	    gl.glEnd();
+	    
+	    gl.glBegin(GL2.GL_QUADS);
+			gl.glColor3f(0.2f, 0.2f, 0.2f);
+		    gl.glVertex2d(0.9f, 0f);
+		    gl.glVertex2d(0.9f, 0.7f);
+		    gl.glVertex2d(0.95f, 0.7f);
+		    gl.glVertex2d(0.95f, 0f);
+	    gl.glEnd();
+	    //ChoNgoi
+	    gl.glBegin(GL2.GL_QUADS);
+		gl.glColor3f(0.2f, 0.2f, 0.2f);
+		    gl.glVertex2d(0.15f, 0.2f);
+		    gl.glVertex2d(0.15f, 0.25f);
+		    gl.glVertex2d(1.05f, 0.25f);
+		    gl.glVertex2d(1.05f, 0.2f);
+	    gl.glEnd();
+	    
+	    gl.glBegin(GL2.GL_QUADS);
+		gl.glColor3f(1f, 1f, 0.4f);
+		    gl.glVertex2d(0f, 0.25f);
+		    gl.glVertex2d(0f, 0.3f);
+		    gl.glVertex2d(1.2f, 0.3f);
+		    gl.glVertex2d(1.2f, 0.25f);
+	    gl.glEnd();
+	    
+	    //Tua    
+	    gl.glBegin(GL2.GL_QUADS);
+		gl.glColor3f(1f, 1f, 0.4f);
+		    gl.glVertex2d(0.1f, 0.35f);
+		    gl.glVertex2d(0.1f, 0.5f);
+		    gl.glVertex2d(1.1f, 0.5f);
+		    gl.glVertex2d(1.1f, 0.35f);
+	    gl.glEnd();
+	    
+	    gl.glBegin(GL2.GL_QUADS);
+		gl.glColor3f(1f, 1f, 0.4f);
+		    gl.glVertex2d(0.1f, 0.55f);
+		    gl.glVertex2d(0.1f, 0.65f);
+		    gl.glVertex2d(1.1f, 0.65f);
+		    gl.glVertex2d(1.1f, 0.55f);
+	    gl.glEnd();
+	}
+	private float rquad=0.0f;
+	public void Hinh3D(GLAutoDrawable drawable,float x, float y, float size) {
+		 final GL2 gl = drawable.getGL().getGL2(); 
+	      gl.glLoadIdentity();
+	      gl.glTranslatef(x,y,size ); 
+	      gl.glRotatef( rquad, 0.0f, 1.0f, 1.0f ); //Xoay hinh trenX, Y & Z
+	      //cho mau sac cac mat khac nhau
+	      gl.glBegin( GL2.GL_QUADS );
+	      gl.glColor3f( 1f,0f,0f );   //red color
+	      gl.glVertex3f( 1.0f, 1.0f, -1.0f ); //Tren Cung Ben Phai
+	      gl.glVertex3f( -1.0f, 1.0f, -1.0f); 
+	      gl.glVertex3f( -1.0f, 1.0f, 1.0f );
+	      gl.glVertex3f( 1.0f, 1.0f, 1.0f ); 
+	      gl.glColor3f( 0f,1f,0f ); //green color
+	      gl.glVertex3f( 1.0f, -1.0f, 1.0f ); 
+	      gl.glVertex3f( -1.0f, -1.0f, 1.0f ); 
+	      gl.glVertex3f( -1.0f, -1.0f, -1.0f );
+	      gl.glVertex3f( 1.0f, -1.0f, -1.0f );
+	      gl.glColor3f( 0f,0f,1f ); //blue color
+	      gl.glVertex3f( 1.0f, 1.0f, 1.0f ); //Tren Cung Ben Phai
+	      gl.glVertex3f( -1.0f, 1.0f, 1.0f );
+	      gl.glVertex3f( -1.0f, -1.0f, 1.0f ); 
+	      gl.glVertex3f( 1.0f, -1.0f, 1.0f );
+	      gl.glColor3f( 1f,1f,0f ); //yellow (red + green)
+	      gl.glVertex3f( 1.0f, -1.0f, -1.0f ); 
+	      gl.glVertex3f( -1.0f, -1.0f, -1.0f ); 
+	      gl.glVertex3f( -1.0f, 1.0f, -1.0f ); 
+	      gl.glVertex3f( 1.0f, 1.0f, -1.0f );
+	      gl.glColor3f( 1f,0f,1f ); //purple (red + green)
+	      gl.glVertex3f( -1.0f, 1.0f, 1.0f ); 
+	      gl.glVertex3f( -1.0f, 1.0f, -1.0f ); 
+	      gl.glVertex3f( -1.0f, -1.0f, -1.0f );
+	      gl.glVertex3f( -1.0f, -1.0f, 1.0f ); 
+	      gl.glColor3f( 0f,1f, 1f ); //sky blue (blue +green)
+	      gl.glVertex3f( 1.0f, 1.0f, -1.0f ); 
+	      gl.glVertex3f( 1.0f, 1.0f, 1.0f );
+	      gl.glVertex3f( 1.0f, -1.0f, 1.0f ); 
+	      gl.glVertex3f( 1.0f, -1.0f, -1.0f ); 
+	      gl.glEnd(); // ve xong
+	      gl.glFlush();
+	      rquad -=1f;
+	}
+
+	public void reshape(GLAutoDrawable drawable , int x, int y, int width, int height ) {
+		final GL2 gl = drawable.getGL().getGL2();
+		if(height <=0)
+			height = 1;
+		final float h = (float)width/(float)height;
+		gl.glViewport(0, 0, width, height);
+		gl.glMatrixMode(GL2.GL_PROJECTION);
+		gl.glLoadIdentity();
+		glu.gluPerspective(55.1f,h,1.0,20.0);
+		gl.glMatrixMode(GL2.GL_MODELVIEW);
+		gl.glLoadIdentity();
+	}
+	public void dispose( GLAutoDrawable drawable) {}
+	public static void main(String[] args) {
+				final GLProfile profile = GLProfile.get(GLProfile.GL2);
+				GLCapabilities capabilities = new GLCapabilities(profile);
+				
+				final GLCanvas glcanvas = new GLCanvas(capabilities);
+				CreateFrame f = new  CreateFrame();
+				glcanvas.addGLEventListener(f);
+				glcanvas.setSize(1366, 768);
+				final JFrame frame = new JFrame ("Tao Frame");
+				frame.getContentPane().add(glcanvas);
+				frame.setSize(frame.getContentPane().getPreferredSize());
+				frame.setVisible(true);
+				//xoay
+				final FPSAnimator animator = new FPSAnimator (glcanvas,200,true);
+				animator.start();
+	}
+}
+*/
